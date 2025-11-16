@@ -33,7 +33,7 @@ public class Client extends Thread {
 
                 String product = store.deleteProduct();
 
-                int t = rand.nextInt(600) + 300;
+                int t = 1500;
                 System.out.println("Cliente:  " + getName() +
                         " consumiendo: " + product + " (tiempo=" + t + "ms)");
 
