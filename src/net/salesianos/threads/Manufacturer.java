@@ -1,5 +1,7 @@
 package net.salesianos.threads;
 
+import java.util.Random;
+
 public class Manufacturer extends Thread {
 
     private final int totalManufacturingProducts;
@@ -20,5 +22,35 @@ public class Manufacturer extends Thread {
 
     public int getTotalManufacturingProducts() {
         return this.totalManufacturingProducts;
+    }
+
+    @Override
+    public void run() {
+
+        Random rand = new Random();
+
+        for (int i = 0; i < totalManufacturingProducts; i++) {
+
+            try {
+                int t = rand.nextInt(700) + 300;
+                Thread.sleep(t);
+
+                String productType = typeProducts[rand.nextInt(typeProducts.length)];
+
+                String finalProduct = productType + " - #" + i + " producido por " + getName();
+
+                System.out.println("Productor:  " + getName() +
+                        " fabrico: " + finalProduct +
+                        " (tiempo=" + t + "ms)");
+
+                store.saveProduct(finalProduct);
+
+            } catch (InterruptedException e) {
+                System.out.println("Productor:  " + getName() + " interrumpido.");
+            }
+        }
+
+        System.out.println("Productor:  " + getName() +
+                " termino de fabricar " + totalManufacturingProducts + " productos.");
     }
 }
