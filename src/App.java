@@ -8,7 +8,7 @@ public class App {
     public static void main(String[] args) throws Exception {
 
         // experimetOne();
-        // experimentTwo();
+        experimentoDos();
         // experimentThree();
 
     }
@@ -26,7 +26,7 @@ public class App {
         consumidor.join();
     }
 
-    public static void experimentTwo() throws Exception {
+    public static void experimentoDos() throws Exception {
         Store store = new Store(5);
 
         Manufacturer productor = new Manufacturer("rapido", 5, store) {
@@ -35,8 +35,9 @@ public class App {
                 Random rand = new Random();
                 for (int i = 0; i < getTotalManufacturingProducts(); i++) {
                     try {
-                        Thread.sleep(rand.nextInt(200) + 50); // ⚡ 50–250 ms
-                        String finalProduct = "Producto rápido #" + i;
+                        Thread.sleep(rand.nextInt(150) + 50);
+                        String finalProduct = "Producto rapido #" + i;
+                        System.out.println("Productor (rapido) produjo: " + finalProduct);
                         store.saveProduct(finalProduct);
                     } catch (InterruptedException e) {
                     }
@@ -50,8 +51,10 @@ public class App {
                 Random rand = new Random();
                 for (int i = 0; i < getTotalProductsToConsume(); i++) {
                     try {
-                        store.deleteProduct();
-                        Thread.sleep(rand.nextInt(1000) + 500);
+                        String p = store.deleteProduct();
+                        int t = rand.nextInt(1200) + 800;
+                        System.out.println("Consumidor (lento) consumiendo: " + p + " (" + t + "ms)");
+                        Thread.sleep(t);
                     } catch (InterruptedException e) {
                     }
                 }
