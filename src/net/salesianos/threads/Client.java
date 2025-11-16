@@ -1,5 +1,7 @@
 package net.salesianos.threads;
 
+import java.util.Random;
+
 import net.salesianos.sincronized.Store;
 
 public class Client extends Thread {
@@ -17,5 +19,35 @@ public class Client extends Thread {
 
     public int getTotalProductsToConsume() {
         return this.totalProductsToConsume;
+    }
+
+    @Override
+    public void run() {
+
+        Random rand = new Random();
+
+        for (int i = 0; i < totalProductsToConsume; i++) {
+            try {
+                System.out.println("Cliente:  " + getName() +
+                        " intenta consumir producto (" + (i + 1) + "/" + totalProductsToConsume + ")");
+
+                String product = store.deleteProduct();
+
+                int t = rand.nextInt(600) + 300;
+                System.out.println("Cliente:  " + getName() +
+                        " consumiendo: " + product + " (tiempo=" + t + "ms)");
+
+                Thread.sleep(t);
+
+                System.out.println("Cliente:  " + getName() +
+                        " consumio: " + product);
+
+            } catch (InterruptedException e) {
+                System.out.println("Cliente:  " + getName() + " interrumpido.");
+            }
+        }
+
+        System.out.println("Cliente:  " + getName() +
+                " termino de consumir " + totalProductsToConsume + " productos.");
     }
 }
