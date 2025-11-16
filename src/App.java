@@ -7,17 +7,18 @@ import net.salesianos.threads.Manufacturer;
 public class App {
     public static void main(String[] args) throws Exception {
 
-        // experimetOne();
+        experimentoUno();
         // experimentTwo();
         // experimentThree();
 
     }
 
-    public static void experimetOne() throws Exception {
+    public static void experimentoUno() throws Exception {
         Store store = new Store(5);
 
-        Manufacturer productor = new Manufacturer("uno", 5, store);
-        Client consumidor = new Client("uno", 5, store);
+        Manufacturer productor = new Manufacturer("P1", 5, store);
+
+        Client consumidor = new Client("C1", 5, store);
 
         productor.start();
         consumidor.start();
