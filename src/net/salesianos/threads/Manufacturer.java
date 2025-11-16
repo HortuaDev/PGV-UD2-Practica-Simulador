@@ -1,6 +1,6 @@
 package net.salesianos.threads;
 
-public class Manufacturer {
+public class Manufacturer extends Thread {
 
     private final int totalManufacturingProducts;
     private final String name;
@@ -16,5 +16,9 @@ public class Manufacturer {
         this.totalManufacturingProducts = totalManufacturingProducts;
         this.store = store;
         setName("Productor-" + name);
+    }
+
+    public int getTotalManufacturingProducts() {
+        return this.totalManufacturingProducts;
     }
 }
