@@ -34,8 +34,7 @@ public class Manufacturer extends Thread {
         for (int i = 0; i < totalManufacturingProducts; i++) {
 
             try {
-                int t = rand.nextInt(700) + 300;
-                Thread.sleep(t);
+                Thread.sleep(300);
 
                 String productType = typeProducts[rand.nextInt(typeProducts.length)];
 
@@ -43,7 +42,7 @@ public class Manufacturer extends Thread {
 
                 System.out.println("Productor:  " + getName() +
                         " fabrico: " + finalProduct +
-                        " (tiempo=" + t + "ms)");
+                        " (tiempo=" + 300 + "ms)");
 
                 store.saveProduct(finalProduct);
 
