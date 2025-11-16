@@ -9,7 +9,7 @@ public class App {
 
         // experimetOne();
         // experimentTwo();
-        // experimentThree();
+        experimentoTres();
 
     }
 
@@ -65,19 +65,24 @@ public class App {
         consumidor.join();
     }
 
-    public static void experimentThree() throws Exception {
+    public static void experimentoTres() throws Exception {
         Store store = new Store(5);
 
-        Manufacturer productor = new Manufacturer("alta-prioridad", 5, store);
+        Manufacturer productor1 = new Manufacturer("alta-prioridad-1", 5, store);
+        Manufacturer productor2 = new Manufacturer("alta-prioridad-2", 5, store);
+
         Client consumidor = new Client("normal", 5, store);
 
-        productor.setPriority(Thread.MAX_PRIORITY);
+        productor1.setPriority(Thread.MAX_PRIORITY);
+        productor2.setPriority(Thread.MAX_PRIORITY);
         consumidor.setPriority(Thread.NORM_PRIORITY);
 
-        productor.start();
+        productor1.start();
+        productor2.start();
         consumidor.start();
 
-        productor.join();
+        productor1.join();
+        productor2.join();
         consumidor.join();
     }
 
