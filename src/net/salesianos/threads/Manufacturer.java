@@ -11,4 +11,10 @@ public class Manufacturer {
             "Snacks", "Panaderia", "Limpieza", "Higiene", "Congelados"
     };
 
+    public Manufacturer(String name, int totalManufacturingProducts, Store store) {
+        this.name = name;
+        this.totalManufacturingProducts = totalManufacturingProducts;
+        this.store = store;
+        setName("Productor-" + name);
+    }
 }
