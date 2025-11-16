@@ -7,6 +7,10 @@ import net.salesianos.threads.Manufacturer;
 public class App {
     public static void main(String[] args) throws Exception {
 
+        // experimetOne();
+        // experimentTwo();
+        // experimentThree();
+
     }
 
     public static void experimetOne() throws Exception {
