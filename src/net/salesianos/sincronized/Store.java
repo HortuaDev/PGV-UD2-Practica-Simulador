@@ -26,4 +26,20 @@ public class Store extends Thread {
 
         notifyAll();
     }
+
+    public synchronized String deleteProduct() throws InterruptedException {
+
+        while (products.isEmpty()) {
+            System.out.println("Almacen vacío. Consumidor espera");
+            wait();
+        }
+
+        String removed = products.remove(0);
+
+        System.out.println("Producto retirado: " + removed +
+                " (ocupación " + products.size() + "/" + maxSize + ")");
+
+        notifyAll();
+        return removed;
+    }
 }
