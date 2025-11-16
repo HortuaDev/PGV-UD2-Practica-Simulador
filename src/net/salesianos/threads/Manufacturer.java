@@ -2,6 +2,8 @@ package net.salesianos.threads;
 
 import java.util.Random;
 
+import net.salesianos.sincronized.Store;
+
 public class Manufacturer extends Thread {
 
     private final int totalManufacturingProducts;
