@@ -12,4 +12,18 @@ public class Store extends Thread {
         this.maxSize = maxSize;
         this.products = new ArrayList<>();
     }
+
+    public synchronized void saveProduct(String product) throws InterruptedException {
+
+        while (products.size() == maxSize) {
+            System.out.println("Almacen lleno. Productor a la espera");
+            wait();
+        }
+
+        products.add(product);
+        System.out.println("Producto agregado: " + product +
+                " (ocupación " + products.size() + "/" + maxSize + ")");
+
+        notifyAll();
+    }
 }
