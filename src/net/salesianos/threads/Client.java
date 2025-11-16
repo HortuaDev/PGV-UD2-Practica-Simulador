@@ -14,4 +14,8 @@ public class Client extends Thread {
         this.store = store;
         setName("Cliente-" + name);
     }
+
+    public int getTotalProductsToConsume() {
+        return this.totalProductsToConsume;
+    }
 }
