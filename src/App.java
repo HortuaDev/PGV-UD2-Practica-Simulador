@@ -7,23 +7,8 @@ import net.salesianos.threads.Manufacturer;
 public class App {
     public static void main(String[] args) throws Exception {
 
-        // experimetOne();
         experimentoDos();
-        // experimentThree();
 
-    }
-
-    public static void experimetOne() throws Exception {
-        Store store = new Store(5);
-
-        Manufacturer productor = new Manufacturer("uno", 5, store);
-        Client consumidor = new Client("uno", 5, store);
-
-        productor.start();
-        consumidor.start();
-
-        productor.join();
-        consumidor.join();
     }
 
     public static void experimentoDos() throws Exception {
@@ -60,22 +45,6 @@ public class App {
                 }
             }
         };
-
-        productor.start();
-        consumidor.start();
-
-        productor.join();
-        consumidor.join();
-    }
-
-    public static void experimentThree() throws Exception {
-        Store store = new Store(5);
-
-        Manufacturer productor = new Manufacturer("alta-prioridad", 5, store);
-        Client consumidor = new Client("normal", 5, store);
-
-        productor.setPriority(Thread.MAX_PRIORITY);
-        consumidor.setPriority(Thread.NORM_PRIORITY);
 
         productor.start();
         consumidor.start();
